@@ -1,0 +1,1003 @@
+<title>ITM Assessment</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap">
+
+<style>
+:root {
+  --navy: #034966;
+  --navy-dark: #023450;
+  --navy-light: #0a6b8f;
+  --gray: #747575;
+  --tan: #D4D5C0;
+  --tan-light: #eeeee4;
+  --bg: #f5f5f0;
+  --surface: #ffffff;
+  --border: #d0d1c4;
+  --fg: #1a1a1a;
+  --fg-muted: #5a5a5a;
+  --accent: #034966;
+  --success: #2a7a4b;
+  --warn: #b85c00;
+  --error: #b82222;
+  --progress-track: #ddddd4;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Barlow', Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --navy: #1a7fa8;
+    --navy-dark: #0e5a78;
+    --navy-light: #3aaad4;
+    --bg: #121820;
+    --surface: #1c2530;
+    --border: #2e3d4f;
+    --fg: #e8edf2;
+    --fg-muted: #8a9baa;
+    --tan: #3a3d2e;
+    --tan-light: #2a2e22;
+    --progress-track: #2e3d4f;
+    --accent: #3aaad4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --navy: #1a7fa8;
+  --navy-dark: #0e5a78;
+  --navy-light: #3aaad4;
+  --bg: #121820;
+  --surface: #1c2530;
+  --border: #2e3d4f;
+  --fg: #e8edf2;
+  --fg-muted: #8a9baa;
+  --tan: #3a3d2e;
+  --tan-light: #2a2e22;
+  --progress-track: #2e3d4f;
+  --accent: #3aaad4;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* HEADER */
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 100;
+  background: var(--navy);
+  color: #fff;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+}
+.header-brand { display: flex; align-items: center; flex-shrink: 0; }
+.header-logo { width: 36px; height: 36px; flex-shrink: 0; }
+.progress-wrap { flex: 1; max-width: 280px; }
+.progress-label {
+  font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase;
+  opacity: 0.75; margin-bottom: 4px; text-align: right;
+}
+.progress-bar-track {
+  height: 4px; background: rgba(255,255,255,0.2);
+  border-radius: 2px; overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%; background: #fff; border-radius: 2px;
+  transition: width 0.4s ease; width: 0%;
+}
+
+/* MAIN */
+.main-wrap { max-width: 720px; margin: 0 auto; padding-inline: 20px; padding-block: 32px; }
+
+/* INTRO */
+.intro-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-top: 4px solid var(--navy); padding: 28px 32px; margin-bottom: 32px;
+}
+.intro-title {
+  font-family: var(--font-display); font-size: 26px; font-weight: 700;
+  letter-spacing: 0.01em; color: var(--navy); text-wrap: balance; margin: 0 0 6px;
+}
+.intro-subtitle { font-size: 13px; color: var(--fg-muted); margin: 0 0 20px; letter-spacing: 0.02em; }
+.meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 0; border: 1px solid var(--border); }
+.meta-cell { padding: 10px 14px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.meta-cell:last-child { border-right: none; }
+.meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); margin-bottom: 2px; }
+.meta-value { font-size: 12px; color: var(--fg-muted); line-height: 1.4; }
+
+/* SCENARIO BOX */
+.scenario-box {
+  background: color-mix(in srgb, var(--navy) 8%, var(--surface));
+  border-left: 4px solid var(--navy);
+  padding: 16px 20px; margin-bottom: 24px; font-size: 14px; line-height: 1.6;
+}
+.scenario-label {
+  font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--navy);
+  margin-bottom: 6px;
+}
+
+/* SECTION */
+.section-block { margin-bottom: 32px; }
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.section-tag {
+  font-family: var(--font-display); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; color: #fff;
+  background: var(--navy); padding: 3px 10px; flex-shrink: 0;
+}
+.section-title {
+  font-family: var(--font-display); font-size: 19px; font-weight: 700;
+  letter-spacing: 0.02em; color: var(--fg); text-wrap: balance;
+}
+.section-rule { height: 2px; background: var(--navy); margin-bottom: 6px; opacity: 0.15; }
+.section-instruction { font-size: 13px; color: var(--fg-muted); margin-bottom: 20px; line-height: 1.5; }
+
+/* QUESTION CARD */
+.q-card {
+  background: var(--surface); border: 1px solid var(--border);
+  margin-bottom: 16px; overflow: hidden; transition: border-color 0.2s;
+}
+.q-card.answered { border-left: 3px solid var(--success); }
+.q-card.error { border-left: 3px solid var(--error); }
+.q-header {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 12px 16px 10px; background: var(--tan-light);
+  border-bottom: 1px solid var(--border);
+}
+.q-id { font-family: var(--font-display); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; color: var(--navy); flex-shrink: 0; }
+.q-label { font-size: 13px; font-weight: 600; color: var(--fg); flex: 1; min-width: 0; }
+.q-body { padding: 14px 16px 16px; }
+.q-required { color: var(--error); font-size: 11px; margin-bottom: 10px; display: none; }
+.q-card.error .q-required { display: block; }
+
+/* PATIENT CARDS */
+.patient-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+@media (max-width: 520px) { .patient-grid { grid-template-columns: 1fr; } }
+.patient-option { position: relative; }
+.patient-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.patient-card {
+  display: block; cursor: pointer;
+  border: 2px solid var(--border); padding: 14px 16px;
+  transition: border-color 0.15s, background 0.15s;
+  height: 100%;
+}
+.patient-option input:checked + .patient-card {
+  border-color: var(--navy);
+  background: color-mix(in srgb, var(--navy) 8%, var(--surface));
+}
+.patient-card:hover { border-color: var(--navy-light); }
+.patient-id {
+  font-family: var(--font-display); font-size: 13px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--navy);
+  margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+}
+.patient-id::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.patient-condition { font-size: 13px; color: var(--fg); margin-bottom: 8px; line-height: 1.5; font-weight: 500; }
+.patient-identity { font-size: 12px; color: var(--fg-muted); font-style: italic; line-height: 1.4; }
+.select-indicator {
+  margin-top: 10px; font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--navy); opacity: 0;
+  transition: opacity 0.15s;
+}
+.patient-option input:checked + .patient-card .select-indicator { opacity: 1; }
+
+/* STAY/LEAVE OPTIONS */
+.action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+@media (max-width: 520px) { .action-grid { grid-template-columns: 1fr; } }
+.action-option { position: relative; }
+.action-option input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.action-card {
+  display: block; cursor: pointer;
+  border: 2px solid var(--border); padding: 16px;
+  transition: border-color 0.15s, background 0.15s; text-align: center;
+}
+.action-option input:checked + .action-card {
+  border-color: var(--navy);
+  background: color-mix(in srgb, var(--navy) 8%, var(--surface));
+}
+.action-card:hover { border-color: var(--navy-light); }
+.action-label {
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  letter-spacing: 0.04em; color: var(--fg); margin-bottom: 4px;
+}
+.action-sub { font-size: 12px; color: var(--fg-muted); line-height: 1.4; }
+.action-option input:checked + .action-card .action-label { color: var(--navy); }
+
+/* CURRENT PATIENT BOX */
+.current-patient-box {
+  border: 1px solid var(--border); padding: 12px 16px;
+  margin-bottom: 14px; background: var(--tan-light);
+}
+.current-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--navy); margin-bottom: 4px;
+}
+.current-text { font-size: 13px; color: var(--fg); line-height: 1.5; }
+.new-info-box {
+  border: 1px solid var(--warn); padding: 12px 16px;
+  margin-bottom: 14px;
+  background: color-mix(in srgb, var(--warn) 6%, var(--surface));
+}
+.new-info-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--warn); margin-bottom: 4px;
+}
+.new-info-text { font-size: 13px; color: var(--fg); line-height: 1.5; }
+
+/* IDENTIFICATION */
+.ident-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+@media (max-width: 480px) { .ident-fields { grid-template-columns: 1fr; } }
+.field-group { display: flex; flex-direction: column; gap: 4px; }
+.field-group label {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--fg-muted);
+}
+.field-group input[type="text"],
+.field-group input[type="date"] {
+  padding: 9px 12px; border: 1px solid var(--border);
+  background: var(--surface); color: var(--fg);
+  font-family: var(--font-body); font-size: 14px;
+  outline: none; transition: border-color 0.15s;
+}
+.field-group input:focus { border-color: var(--navy); }
+
+/* ACTIONS */
+.form-actions { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; align-items: center; }
+.btn-primary {
+  background: var(--navy); color: #fff; border: none;
+  padding: 13px 32px; font-family: var(--font-display); font-size: 15px;
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  cursor: pointer; transition: background 0.15s;
+}
+.btn-primary:hover { background: var(--navy-dark); }
+.btn-secondary {
+  background: transparent; color: var(--fg-muted); border: 1px solid var(--border);
+  padding: 12px 20px; font-family: var(--font-body); font-size: 14px;
+  cursor: pointer; transition: border-color 0.15s;
+}
+.btn-secondary:hover { border-color: var(--navy); color: var(--navy); }
+.validation-msg { font-size: 13px; color: var(--error); display: none; }
+.validation-msg.visible { display: block; }
+
+/* RESULT */
+.result-panel {
+  background: var(--surface); border: 1px solid var(--border);
+  border-top: 4px solid var(--navy); padding: 32px; margin-bottom: 32px;
+}
+.result-title {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  color: var(--navy); margin: 0 0 24px; text-wrap: balance;
+}
+.complete-badge {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 24px; background: var(--navy); color: #fff; margin-bottom: 24px;
+}
+.complete-icon { font-size: 40px; line-height: 1; }
+.complete-info { flex: 1; }
+.complete-name {
+  font-family: var(--font-display); font-size: 20px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px;
+}
+.complete-desc { font-size: 13px; opacity: 0.85; line-height: 1.5; }
+.response-summary { margin-top: 20px; border-top: 1px solid var(--border); padding-top: 16px; }
+.summary-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--fg-muted); margin-bottom: 12px;
+}
+.summary-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.summary-table tr { border-bottom: 1px solid var(--border); }
+.summary-table td { padding: 7px 8px; vertical-align: top; }
+.summary-table td:first-child { font-weight: 600; color: var(--fg-muted); width: 40%; font-size: 12px; }
+.copy-wrap { margin-top: 16px; }
+.copy-area {
+  width: 100%; font-family: monospace; font-size: 12px;
+  padding: 12px; border: 1px solid var(--border);
+  background: var(--tan-light); color: var(--fg); resize: none; height: 180px;
+}
+.copy-btn {
+  margin-top: 8px; background: transparent; border: 1px solid var(--border);
+  padding: 7px 16px; font-size: 13px; cursor: pointer; color: var(--fg);
+  transition: border-color 0.15s;
+}
+.copy-btn:hover { border-color: var(--navy); color: var(--navy); }
+.copy-confirm { font-size: 12px; color: var(--success); margin-left: 10px; display: none; }
+.btn-restart {
+  display: inline-block; margin-top: 20px; background: transparent;
+  border: 1px solid var(--navy); color: var(--navy); padding: 10px 22px;
+  font-family: var(--font-body); font-size: 14px; cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-restart:hover { background: color-mix(in srgb, var(--navy) 8%, transparent); }
+.sheet-status { margin-top: 16px; font-size: 13px; font-weight: 600; }
+
+#survey-form { display: block; }
+#result-screen { display: none; }
+</style>
+
+<header class="site-header">
+  <div class="header-brand">
+    <svg class="header-logo" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="36" height="36" fill="#ffffff" rx="3"/>
+      <text x="18" y="14" text-anchor="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="9" fill="#034966">R2MG</text>
+      <rect x="6" y="17" width="24" height="1.5" fill="#034966"/>
+      <text x="18" y="26" text-anchor="middle" font-family="Arial,sans-serif" font-size="5.5" fill="#747575" font-weight="600">RESOLUTE RESPONSE</text>
+      <text x="18" y="31.5" text-anchor="middle" font-family="Arial,sans-serif" font-size="4.5" fill="#747575">MEDICAL GROUP</text>
+    </svg>
+  </div>
+  <div class="progress-wrap">
+    <div class="progress-label" id="progress-label">0 of 12 answered</div>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+  </div>
+</header>
+
+<main class="main-wrap">
+
+  <div id="survey-form">
+
+    <div class="intro-card">
+      <h1 class="intro-title">ITM Assessment</h1>
+      <p class="intro-subtitle">Importance of Treating / Moving — Military Medic Decision-Making Instrument</p>
+      <div class="meta-grid">
+        <div class="meta-cell"><div class="meta-label">Purpose</div><div class="meta-value">Capture triage and patient-movement decisions under simulated operational conditions</div></div>
+        <div class="meta-cell"><div class="meta-label">Administration</div><div class="meta-value">Digital · Est. 5–8 min · Data collection only — no right or wrong answers</div></div>
+        <div class="meta-cell"><div class="meta-label">Format</div><div class="meta-value">Part 1: Two-patient triage (6 scenarios) · Part 2: Stay or move decisions (6 scenarios)</div></div>
+        <div class="meta-cell"><div class="meta-label">Version</div><div class="meta-value">1.0 · October 2026</div></div>
+      </div>
+    </div>
+
+    <form id="main-form" novalidate>
+
+      <!-- PART 1 -->
+      <div class="section-block">
+        <div class="section-header">
+          <span class="section-tag">Part 1</span>
+          <span class="section-title">Two-Patient Triage Decisions</span>
+        </div>
+        <div class="section-rule"></div>
+        <div class="scenario-box">
+          <div class="scenario-label">Scenario</div>
+          Imagine that you are deployed as a military medic in a foreign country. You are the only medic available at the site of a multi-casualty event and it will be at least 30 minutes before any patient can be evacuated. There are two patients, Patient A and Patient B, and you only have time to treat one of them.
+        </div>
+        <p class="section-instruction">For each scenario below, select the patient you would treat. There are no right or wrong answers — respond based on your training and judgment.</p>
+
+        <!-- P1-Q1 -->
+        <div class="q-card" id="card-p1q1">
+          <div class="q-header"><span class="q-id">1</span><span class="q-label">Two-Patient Triage</span></div>
+          <div class="q-body">
+            <p class="q-required">Please select a patient.</p>
+            <div class="patient-grid">
+              <div class="patient-option">
+                <input type="radio" name="p1q1" value="A" id="p1q1-a">
+                <label class="patient-card" for="p1q1-a">
+                  <div class="patient-id">Patient A</div>
+                  <div class="patient-condition">Compensated shock (high heart rate, fast breathing). Bleeding stopped after large blood loss.</div>
+                  <div class="patient-identity">Foreign civilian — former member of opponent military</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+              <div class="patient-option">
+                <input type="radio" name="p1q1" value="B" id="p1q1-b">
+                <label class="patient-card" for="p1q1-b">
+                  <div class="patient-id">Patient B</div>
+                  <div class="patient-condition">Compound fracture above right elbow with mild bleeding.</div>
+                  <div class="patient-identity">Warfighter — same military unit as you</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P1-Q2 -->
+        <div class="q-card" id="card-p1q2">
+          <div class="q-header"><span class="q-id">2</span><span class="q-label">Two-Patient Triage</span></div>
+          <div class="q-body">
+            <p class="q-required">Please select a patient.</p>
+            <div class="patient-grid">
+              <div class="patient-option">
+                <input type="radio" name="p1q2" value="A" id="p1q2-a">
+                <label class="patient-card" for="p1q2-a">
+                  <div class="patient-id">Patient A</div>
+                  <div class="patient-condition">Moderate bleeding from left hip.</div>
+                  <div class="patient-identity">Foreign civilian contractor working with your unit</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+              <div class="patient-option">
+                <input type="radio" name="p1q2" value="B" id="p1q2-b">
+                <label class="patient-card" for="p1q2-b">
+                  <div class="patient-id">Patient B</div>
+                  <div class="patient-condition">Broken right arm with no bleeding.</div>
+                  <div class="patient-identity">Warfighter — same military unit as you</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P1-Q3 -->
+        <div class="q-card" id="card-p1q3">
+          <div class="q-header"><span class="q-id">3</span><span class="q-label">Two-Patient Triage</span></div>
+          <div class="q-body">
+            <p class="q-required">Please select a patient.</p>
+            <div class="patient-grid">
+              <div class="patient-option">
+                <input type="radio" name="p1q3" value="A" id="p1q3-a">
+                <label class="patient-card" for="p1q3-a">
+                  <div class="patient-id">Patient A</div>
+                  <div class="patient-condition">Compensated shock (high heart rate, fast breathing). Bleeding stopped after large blood loss.</div>
+                  <div class="patient-identity">Foreign civilian — former member of opponent military</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+              <div class="patient-option">
+                <input type="radio" name="p1q3" value="B" id="p1q3-b">
+                <label class="patient-card" for="p1q3-b">
+                  <div class="patient-id">Patient B</div>
+                  <div class="patient-condition">Moderate bleeding from right hip.</div>
+                  <div class="patient-identity">Warfighter — same military unit as you</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P1-Q4 -->
+        <div class="q-card" id="card-p1q4">
+          <div class="q-header"><span class="q-id">4</span><span class="q-label">Two-Patient Triage</span></div>
+          <div class="q-body">
+            <p class="q-required">Please select a patient.</p>
+            <div class="patient-grid">
+              <div class="patient-option">
+                <input type="radio" name="p1q4" value="A" id="p1q4-a">
+                <label class="patient-card" for="p1q4-a">
+                  <div class="patient-id">Patient A</div>
+                  <div class="patient-condition">Massive bleeding from partial amputation of left foot.</div>
+                  <div class="patient-identity">Foreign civilian — former member of opponent military</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+              <div class="patient-option">
+                <input type="radio" name="p1q4" value="B" id="p1q4-b">
+                <label class="patient-card" for="p1q4-b">
+                  <div class="patient-id">Patient B</div>
+                  <div class="patient-condition">Dislocated right knee with no bleeding.</div>
+                  <div class="patient-identity">Warfighter — same military unit as you</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P1-Q5 -->
+        <div class="q-card" id="card-p1q5">
+          <div class="q-header"><span class="q-id">5</span><span class="q-label">Two-Patient Triage</span></div>
+          <div class="q-body">
+            <p class="q-required">Please select a patient.</p>
+            <div class="patient-grid">
+              <div class="patient-option">
+                <input type="radio" name="p1q5" value="A" id="p1q5-a">
+                <label class="patient-card" for="p1q5-a">
+                  <div class="patient-id">Patient A</div>
+                  <div class="patient-condition">Massive bleeding from partial amputation of left foot.</div>
+                  <div class="patient-identity">Foreign civilian contractor working with your unit</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+              <div class="patient-option">
+                <input type="radio" name="p1q5" value="B" id="p1q5-b">
+                <label class="patient-card" for="p1q5-b">
+                  <div class="patient-id">Patient B</div>
+                  <div class="patient-condition">Compensated shock (high heart rate, fast breathing). Bleeding stopped after large blood loss.</div>
+                  <div class="patient-identity">Warfighter — same military unit as you</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P1-Q6 -->
+        <div class="q-card" id="card-p1q6">
+          <div class="q-header"><span class="q-id">6</span><span class="q-label">Two-Patient Triage</span></div>
+          <div class="q-body">
+            <p class="q-required">Please select a patient.</p>
+            <div class="patient-grid">
+              <div class="patient-option">
+                <input type="radio" name="p1q6" value="A" id="p1q6-a">
+                <label class="patient-card" for="p1q6-a">
+                  <div class="patient-id">Patient A</div>
+                  <div class="patient-condition">Moderate bleeding from left forearm.</div>
+                  <div class="patient-identity">Foreign civilian contractor — works for US military, not your unit</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+              <div class="patient-option">
+                <input type="radio" name="p1q6" value="B" id="p1q6-b">
+                <label class="patient-card" for="p1q6-b">
+                  <div class="patient-id">Patient B</div>
+                  <div class="patient-condition">Compound fracture of right forearm with mild bleeding.</div>
+                  <div class="patient-identity">Warfighter — same military unit as you</div>
+                  <div class="select-indicator">✓ Selected</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /Part 1 -->
+
+      <!-- PART 2 -->
+      <div class="section-block">
+        <div class="section-header">
+          <span class="section-tag">Part 2</span>
+          <span class="section-title">Stay or Move Decisions</span>
+        </div>
+        <div class="section-rule"></div>
+        <div class="scenario-box">
+          <div class="scenario-label">Scenario</div>
+          Imagine that you are deployed as a military medic in a foreign country. You arrive at a scene where you know there may be multiple casualties. It will be at least 30 minutes before any casualty can be evacuated and you are the only medic available.
+        </div>
+        <p class="section-instruction">For each scenario, you have just finished treating your current patient. Decide whether to stay or move to find the next casualty.</p>
+
+        <!-- P2-Q1 -->
+        <div class="q-card" id="card-p2q1">
+          <div class="q-header"><span class="q-id">7</span><span class="q-label">Stay or Move</span></div>
+          <div class="q-body">
+            <p class="q-required">Please make a selection.</p>
+            <div class="current-patient-box">
+              <div class="current-label">Current Patient — Just Treated</div>
+              <div class="current-text">Broken left arm with no bleeding.</div>
+            </div>
+            <div class="new-info-box">
+              <div class="new-info-label">New Information</div>
+              <div class="new-info-text">You hear someone out of sight calling for a medic. They describe a casualty who isn't breathing.</div>
+            </div>
+            <div class="action-grid">
+              <div class="action-option">
+                <input type="radio" name="p2q1" value="stay" id="p2q1-stay">
+                <label class="action-card" for="p2q1-stay">
+                  <div class="action-label">Stay</div>
+                  <div class="action-sub">Continue with current patient</div>
+                </label>
+              </div>
+              <div class="action-option">
+                <input type="radio" name="p2q1" value="move" id="p2q1-move">
+                <label class="action-card" for="p2q1-move">
+                  <div class="action-label">Move</div>
+                  <div class="action-sub">Find and treat a different patient</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2-Q2 -->
+        <div class="q-card" id="card-p2q2">
+          <div class="q-header"><span class="q-id">8</span><span class="q-label">Stay or Move</span></div>
+          <div class="q-body">
+            <p class="q-required">Please make a selection.</p>
+            <div class="current-patient-box">
+              <div class="current-label">Current Patient — Just Treated</div>
+              <div class="current-text">Compensated shock (high heart rate, fast breathing). Bleeding stopped after large blood loss.</div>
+            </div>
+            <div class="new-info-box">
+              <div class="new-info-label">New Information</div>
+              <div class="new-info-text">You hear thumps or sounds from something or someone falling out of sight.</div>
+            </div>
+            <div class="action-grid">
+              <div class="action-option">
+                <input type="radio" name="p2q2" value="stay" id="p2q2-stay">
+                <label class="action-card" for="p2q2-stay">
+                  <div class="action-label">Stay</div>
+                  <div class="action-sub">Continue with current patient</div>
+                </label>
+              </div>
+              <div class="action-option">
+                <input type="radio" name="p2q2" value="move" id="p2q2-move">
+                <label class="action-card" for="p2q2-move">
+                  <div class="action-label">Move</div>
+                  <div class="action-sub">Find and treat a different patient</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2-Q3 -->
+        <div class="q-card" id="card-p2q3">
+          <div class="q-header"><span class="q-id">9</span><span class="q-label">Stay or Move</span></div>
+          <div class="q-body">
+            <p class="q-required">Please make a selection.</p>
+            <div class="current-patient-box">
+              <div class="current-label">Current Patient — Just Treated</div>
+              <div class="current-text">Massive bleeding from partial amputation of right foot.</div>
+            </div>
+            <div class="new-info-box">
+              <div class="new-info-label">New Information</div>
+              <div class="new-info-text">You hear thumps or sounds from something or someone falling out of sight.</div>
+            </div>
+            <div class="action-grid">
+              <div class="action-option">
+                <input type="radio" name="p2q3" value="stay" id="p2q3-stay">
+                <label class="action-card" for="p2q3-stay">
+                  <div class="action-label">Stay</div>
+                  <div class="action-sub">Continue with current patient</div>
+                </label>
+              </div>
+              <div class="action-option">
+                <input type="radio" name="p2q3" value="move" id="p2q3-move">
+                <label class="action-card" for="p2q3-move">
+                  <div class="action-label">Move</div>
+                  <div class="action-sub">Find and treat a different patient</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2-Q4 -->
+        <div class="q-card" id="card-p2q4">
+          <div class="q-header"><span class="q-id">10</span><span class="q-label">Stay or Move</span></div>
+          <div class="q-body">
+            <p class="q-required">Please make a selection.</p>
+            <div class="current-patient-box">
+              <div class="current-label">Current Patient — Just Treated</div>
+              <div class="current-text">Compound fracture above left elbow with mild bleeding.</div>
+            </div>
+            <div class="new-info-box">
+              <div class="new-info-label">New Information</div>
+              <div class="new-info-text">Someone you know and trust tells you there is a casualty out of sight who is bleeding a lot.</div>
+            </div>
+            <div class="action-grid">
+              <div class="action-option">
+                <input type="radio" name="p2q4" value="stay" id="p2q4-stay">
+                <label class="action-card" for="p2q4-stay">
+                  <div class="action-label">Stay</div>
+                  <div class="action-sub">Continue with current patient</div>
+                </label>
+              </div>
+              <div class="action-option">
+                <input type="radio" name="p2q4" value="move" id="p2q4-move">
+                <label class="action-card" for="p2q4-move">
+                  <div class="action-label">Move</div>
+                  <div class="action-sub">Find and treat a different patient</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2-Q5 -->
+        <div class="q-card" id="card-p2q5">
+          <div class="q-header"><span class="q-id">11</span><span class="q-label">Stay or Move</span></div>
+          <div class="q-body">
+            <p class="q-required">Please make a selection.</p>
+            <div class="current-patient-box">
+              <div class="current-label">Current Patient — Just Treated</div>
+              <div class="current-text">Compound fracture above right elbow with mild bleeding.</div>
+            </div>
+            <div class="new-info-box">
+              <div class="new-info-label">New Information</div>
+              <div class="new-info-text">You hear thumps or sounds from something or someone falling out of sight.</div>
+            </div>
+            <div class="action-grid">
+              <div class="action-option">
+                <input type="radio" name="p2q5" value="stay" id="p2q5-stay">
+                <label class="action-card" for="p2q5-stay">
+                  <div class="action-label">Stay</div>
+                  <div class="action-sub">Continue with current patient</div>
+                </label>
+              </div>
+              <div class="action-option">
+                <input type="radio" name="p2q5" value="move" id="p2q5-move">
+                <label class="action-card" for="p2q5-move">
+                  <div class="action-label">Move</div>
+                  <div class="action-sub">Find and treat a different patient</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- P2-Q6 -->
+        <div class="q-card" id="card-p2q6">
+          <div class="q-header"><span class="q-id">12</span><span class="q-label">Stay or Move</span></div>
+          <div class="q-body">
+            <p class="q-required">Please make a selection.</p>
+            <div class="current-patient-box">
+              <div class="current-label">Current Patient — Just Treated</div>
+              <div class="current-text">Moderate bleeding from right hip.</div>
+            </div>
+            <div class="new-info-box">
+              <div class="new-info-label">New Information</div>
+              <div class="new-info-text">Someone you know and trust tells you there is a casualty out of sight who is bleeding a lot.</div>
+            </div>
+            <div class="action-grid">
+              <div class="action-option">
+                <input type="radio" name="p2q6" value="stay" id="p2q6-stay">
+                <label class="action-card" for="p2q6-stay">
+                  <div class="action-label">Stay</div>
+                  <div class="action-sub">Continue with current patient</div>
+                </label>
+              </div>
+              <div class="action-option">
+                <input type="radio" name="p2q6" value="move" id="p2q6-move">
+                <label class="action-card" for="p2q6-move">
+                  <div class="action-label">Move</div>
+                  <div class="action-sub">Find and treat a different patient</div>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /Part 2 -->
+
+      <!-- IDENTIFICATION -->
+      <div class="section-block">
+        <div class="section-header">
+          <span class="section-tag">Identification</span>
+          <span class="section-title">Participant &amp; Event Information</span>
+        </div>
+        <div class="section-rule"></div>
+        <div class="q-card answered">
+          <div class="q-body" style="padding-top:16px">
+            <div class="ident-fields">
+              <div class="field-group">
+                <label for="ident-name">Name (if required)</label>
+                <input type="text" id="ident-name" name="ident_name" placeholder="Last, First (optional)">
+              </div>
+              <div class="field-group">
+                <label for="ident-event">Event</label>
+                <input type="text" id="ident-event" name="ident_event" placeholder="Event name / identifier">
+              </div>
+              <div class="field-group">
+                <label for="ident-date">Date</label>
+                <input type="date" id="ident-date" name="ident_date">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-primary">Submit Assessment</button>
+        <button type="button" class="btn-secondary" id="btn-clear">Clear Form</button>
+        <span class="validation-msg" id="val-msg">Please complete all questions before submitting.</span>
+      </div>
+
+    </form>
+  </div><!-- /survey-form -->
+
+  <!-- RESULT -->
+  <div id="result-screen">
+    <div class="result-panel">
+      <h2 class="result-title">Assessment Complete</h2>
+      <div class="complete-badge">
+        <div class="complete-icon">✓</div>
+        <div class="complete-info">
+          <div class="complete-name">ITM Assessment Submitted</div>
+          <div class="complete-desc">All 12 responses recorded. Thank you for completing the assessment.</div>
+        </div>
+      </div>
+      <div class="response-summary">
+        <div class="summary-title">Response Summary</div>
+        <table class="summary-table" id="summary-table"></table>
+      </div>
+      <div class="sheet-status" id="sheet-status"></div>
+      <div class="copy-wrap">
+        <div class="summary-title" style="margin-bottom:6px">Export Record</div>
+        <textarea class="copy-area" id="export-text" readonly></textarea>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button class="copy-btn" id="copy-btn">Copy to Clipboard</button>
+          <span class="copy-confirm" id="copy-confirm">Copied!</span>
+        </div>
+      </div>
+      <button class="btn-restart" id="btn-restart">Start New Participant</button>
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function() {
+
+  const QUESTIONS = ['p1q1','p1q2','p1q3','p1q4','p1q5','p1q6',
+                     'p2q1','p2q2','p2q3','p2q4','p2q5','p2q6'];
+  const TOTAL = QUESTIONS.length;
+
+  const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwI9nHbnndfG5oyBTc17pa5ic23fnO4SjFGbJbRnsQXT9Nese0RxqXXUvrU_DWu0H5-_A/exec';
+
+  function getRadio(name) {
+    const el = document.querySelector('[name="' + name + '"]:checked');
+    return el ? el.value : null;
+  }
+
+  function updateProgress() {
+    const answered = QUESTIONS.filter(n => getRadio(n) !== null).length;
+    const pct = Math.round(answered / TOTAL * 100);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = answered + ' of ' + TOTAL + ' answered';
+    QUESTIONS.forEach(function(name) {
+      const card = document.getElementById('card-' + name);
+      if (!card) return;
+      card.classList.toggle('answered', getRadio(name) !== null);
+    });
+  }
+
+  document.getElementById('main-form').addEventListener('change', updateProgress);
+
+  function validate() {
+    let valid = true;
+    QUESTIONS.forEach(function(name) {
+      const card = document.getElementById('card-' + name);
+      const answered = getRadio(name) !== null;
+      if (card) card.classList.toggle('error', !answered);
+      if (!answered) valid = false;
+    });
+    return valid;
+  }
+
+  const LABELS = {
+    p1q1: { A: 'Patient A', B: 'Patient B' },
+    p1q2: { A: 'Patient A', B: 'Patient B' },
+    p1q3: { A: 'Patient A', B: 'Patient B' },
+    p1q4: { A: 'Patient A', B: 'Patient B' },
+    p1q5: { A: 'Patient A', B: 'Patient B' },
+    p1q6: { A: 'Patient A', B: 'Patient B' },
+    p2q1: { stay: 'Stay — Continue with current patient', move: 'Move — Find and treat different patient' },
+    p2q2: { stay: 'Stay — Continue with current patient', move: 'Move — Find and treat different patient' },
+    p2q3: { stay: 'Stay — Continue with current patient', move: 'Move — Find and treat different patient' },
+    p2q4: { stay: 'Stay — Continue with current patient', move: 'Move — Find and treat different patient' },
+    p2q5: { stay: 'Stay — Continue with current patient', move: 'Move — Find and treat different patient' },
+    p2q6: { stay: 'Stay — Continue with current patient', move: 'Move — Find and treat different patient' },
+  };
+
+  const Q_LABELS = [
+    'Part 1 — Q1: Two-Patient Triage',
+    'Part 1 — Q2: Two-Patient Triage',
+    'Part 1 — Q3: Two-Patient Triage',
+    'Part 1 — Q4: Two-Patient Triage',
+    'Part 1 — Q5: Two-Patient Triage',
+    'Part 1 — Q6: Two-Patient Triage',
+    'Part 2 — Q7: Stay or Move',
+    'Part 2 — Q8: Stay or Move',
+    'Part 2 — Q9: Stay or Move',
+    'Part 2 — Q10: Stay or Move',
+    'Part 2 — Q11: Stay or Move',
+    'Part 2 — Q12: Stay or Move',
+  ];
+
+  document.getElementById('main-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (!validate()) {
+      document.getElementById('val-msg').classList.add('visible');
+      const firstErr = document.querySelector('.q-card.error');
+      if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    document.getElementById('val-msg').classList.remove('visible');
+    showResult();
+  });
+
+  function showResult() {
+    const ts = new Date().toISOString();
+    const name = document.getElementById('ident-name').value || '';
+    const event = document.getElementById('ident-event').value || '';
+    const date = document.getElementById('ident-date').value || '';
+
+    // Build summary table
+    const rows = QUESTIONS.map(function(name, i) {
+      const val = getRadio(name);
+      return [Q_LABELS[i], LABELS[name][val] || val];
+    });
+    rows.push(['Name', name || '—'], ['Event', event || '—'], ['Date', date || '—']);
+
+    const st = document.getElementById('summary-table');
+    st.innerHTML = rows.map(function(r) {
+      return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td></tr>';
+    }).join('');
+
+    // Export text
+    const exportLines = [
+      '=== R2MG ITM ASSESSMENT RECORD ===',
+      'Timestamp: ' + ts,
+      'Participant: ' + (name || 'Anonymous'),
+      'Event: ' + (event || '—'),
+      'Date: ' + (date || '—'),
+      '',
+      'PART 1 — TWO-PATIENT TRIAGE:',
+    ];
+    for (var i = 0; i < 6; i++) {
+      var val = getRadio(QUESTIONS[i]);
+      exportLines.push('  ' + Q_LABELS[i] + ': ' + (LABELS[QUESTIONS[i]][val] || val));
+    }
+    exportLines.push('', 'PART 2 — STAY OR MOVE:');
+    for (var j = 6; j < 12; j++) {
+      var val2 = getRadio(QUESTIONS[j]);
+      exportLines.push('  ' + Q_LABELS[j] + ': ' + (LABELS[QUESTIONS[j]][val2] || val2));
+    }
+    exportLines.push('', 'Instrument: ITM Assessment v1.0 · R2MG · October 2026');
+    document.getElementById('export-text').value = exportLines.join('\n');
+
+    // Build sheet payload
+    var payload = {
+      timestamp: ts, name: name, event: event, date: date,
+      p1q1: getRadio('p1q1'), p1q2: getRadio('p1q2'), p1q3: getRadio('p1q3'),
+      p1q4: getRadio('p1q4'), p1q5: getRadio('p1q5'), p1q6: getRadio('p1q6'),
+      p2q1: getRadio('p2q1'), p2q2: getRadio('p2q2'), p2q3: getRadio('p2q3'),
+      p2q4: getRadio('p2q4'), p2q5: getRadio('p2q5'), p2q6: getRadio('p2q6'),
+      sheet_tab: 'ITM Responses'
+    };
+
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }).then(function() {
+      document.getElementById('sheet-status').textContent = '✓ Response saved to dataset';
+      document.getElementById('sheet-status').style.color = 'var(--success)';
+    }).catch(function() {
+      document.getElementById('sheet-status').textContent = '⚠ Save failed — use copy button below';
+      document.getElementById('sheet-status').style.color = 'var(--warn)';
+    });
+
+    document.getElementById('survey-form').hidden = true;
+    document.getElementById('result-screen').hidden = false;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('progress-bar').style.width = '100%';
+    document.getElementById('progress-label').textContent = 'Complete';
+  }
+
+  document.getElementById('copy-btn').addEventListener('click', function() {
+    var text = document.getElementById('export-text').value;
+    navigator.clipboard.writeText(text).then(function() {
+      var conf = document.getElementById('copy-confirm');
+      conf.style.display = 'inline';
+      setTimeout(function() { conf.style.display = 'none'; }, 2500);
+    }).catch(function() {
+      document.getElementById('export-text').select();
+    });
+  });
+
+  document.getElementById('btn-restart').addEventListener('click', function() {
+    document.getElementById('main-form').reset();
+    document.querySelectorAll('.q-card').forEach(function(c) { c.classList.remove('answered','error'); });
+    document.getElementById('result-screen').hidden = true;
+    document.getElementById('survey-form').hidden = false;
+    updateProgress();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('btn-clear').addEventListener('click', function() {
+    document.getElementById('main-form').reset();
+    document.querySelectorAll('.q-card').forEach(function(c) { c.classList.remove('answered','error'); });
+    document.getElementById('val-msg').classList.remove('visible');
+    updateProgress();
+  });
+
+  updateProgress();
+  try {
+    document.getElementById('ident-date').value = new Date().toISOString().split('T')[0];
+  } catch(e) {}
+
+})();
+</script>
